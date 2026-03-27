@@ -1,0 +1,29 @@
+{
+  "manifest_version": 3,
+  "name": "AI Chat Privacy",
+  "version": "1.0",
+  "description": "隐藏AI聊天网站的历史查询记录，按Shift+H可临时显示",
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.doubao.com/chat/*"
+      ],
+      "js": ["doubao.js"],
+      "run_at": "document_end"
+    },
+    {
+      "matches": [
+        "https://www.qianwen.com/chat/*"
+      ],
+      "js": ["qianwen.js"],
+      "run_at": "document_end"
+    },
+    {
+      "matches": [
+        "https://chat.deepseek.com/*"
+      ],
+      "js": ["deepseek.js"],
+      "run_at": "document_end"
+    }
+  ]
+}
