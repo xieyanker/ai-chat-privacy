@@ -7,6 +7,7 @@
 - [x] 豆包 (doubao.com)
 - [x] 千问 (qianwen.com)
 - [x] DeepSeek (chat.deepseek.com)
+- [x] 元宝 (yuanbao.tencent.com)
 
 ## 功能特点
 
@@ -35,6 +36,7 @@ ai-chat-privacy/
 ├── doubao.js        # 豆包
 ├── qianwen.js       # 千问
 ├── deepseek.js      # DeepSeek
+├── yuanbao.js       # 元宝
 └── README.md
 ```
 

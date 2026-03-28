@@ -8,7 +8,7 @@
     const items = sidebar.querySelectorAll('div');
     items.forEach(el => {
       const text = el.textContent || '';
-      if (!text.includes('对话分组') && !text.includes('最近对话') && !text.includes('新对话') && !text.includes('设置') && text.length > 5) {
+      if (!text.includes('对话分组') && !text.includes('最近对话') && !text.includes('新对话') && !text.includes('设置')) {
         el.style.visibility = 'hidden';
         el.style.opacity = '0';
       }
