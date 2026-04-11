@@ -1,50 +1,35 @@
 (function() {
   let isHidden = true;
 
+  function getChatListContainer() {
+    const nav = document.querySelector('nav[class*="left-side"]');
+    if (!nav) return null;
+    const div = nav.querySelector('div.relative');
+    if (!div) return null;
+    return div.children[2]?.children[1]?.children[1] || null;
+  }
+
   function hideHistoryPanel() {
-    const viewAllChatsButton = document.querySelector('[data-testid="view_all_chats_button"]');
-    if (!viewAllChatsButton) return;
-    
-    const sectionItem = viewAllChatsButton.closest('[data-testid="sidebar-section-item"]');
-    if (!sectionItem) return;
-    
-    const parent = sectionItem.parentElement;
-    if (!parent) return;
-    
-    const siblings = parent.children;
-    
-    for (let i = 0; i < siblings.length; i++) {
-      const sibling = siblings[i];
-      const siblingText = sibling.textContent || '';
-      
-      const isNewChat = siblingText.includes('新对话');
-      const isSettings = siblingText.includes('设置') || siblingText.includes('个人');
-      const isViewAllButton = siblingText.trim() === '历史对话';
-      
-      if (!isNewChat && !isSettings && !isViewAllButton) {
-        sibling.style.visibility = 'hidden';
-        sibling.style.opacity = '0';
+    const container = getChatListContainer();
+    if (!container) return;
+
+    for (let i = 0; i < container.children.length; i++) {
+      const child = container.children[i];
+      if (!child.textContent?.includes('新对话')) {
+        child.style.visibility = 'hidden';
+        child.style.opacity = '0';
       }
     }
     isHidden = true;
   }
 
   function showHistoryPanel() {
-    const viewAllChatsButton = document.querySelector('[data-testid="view_all_chats_button"]');
-    if (!viewAllChatsButton) return;
-    
-    const sectionItem = viewAllChatsButton.closest('[data-testid="sidebar-section-item"]');
-    if (!sectionItem) return;
-    
-    const parent = sectionItem.parentElement;
-    if (!parent) return;
-    
-    const siblings = parent.children;
-    
-    for (let i = 0; i < siblings.length; i++) {
-      const sibling = siblings[i];
-      sibling.style.visibility = '';
-      sibling.style.opacity = '';
+    const container = getChatListContainer();
+    if (!container) return;
+
+    for (let i = 0; i < container.children.length; i++) {
+      container.children[i].style.visibility = '';
+      container.children[i].style.opacity = '';
     }
     isHidden = false;
   }
